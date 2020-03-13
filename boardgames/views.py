@@ -1,9 +1,31 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
+
+games = [
+    {
+        'players_count': 5,
+        'name': 'Catan',
+        'genre': 'Dice Rolling'
+    },
+    {
+        'players_count': 7,
+        'name': '7 Wonders',
+        'genre': 'Deck building'
+    },
+    {
+        'players_count': 6,
+        'name': 'Talisman',
+        'genre': 'Dice Rolling'
+    },
+]
 
 
 def home(request):
-    return HttpResponse('<h1>Boardgames list</h1>')
+    context = {
+        'games': games
+    }
+    return render(request, 'boardgames/home.html', context)
+
 
 def about(request):
-    return HttpResponse('<h1>Boardgames about</h1>')
+    return render(request, 'boardgames/about.html', {'title': 'About'})

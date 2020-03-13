@@ -1,0 +1,11 @@
+{% extends "boardgames/base.html" %}
+
+{% block content %}
+{% for game in games %}
+
+
+
+<h1> {{game.name}}</h1>
+<p> max players : {{game.players_count}}</p>
+{% endfor %}
+{% endblock %}
