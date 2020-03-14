@@ -1,28 +1,10 @@
 from django.shortcuts import render
-
-
-games = [
-    {
-        'players_count': 5,
-        'name': 'Catan',
-        'genre': 'Dice Rolling'
-    },
-    {
-        'players_count': 7,
-        'name': '7 Wonders',
-        'genre': 'Deck building'
-    },
-    {
-        'players_count': 6,
-        'name': 'Talisman',
-        'genre': 'Dice Rolling'
-    },
-]
+from .models import Game
 
 
 def home(request):
     context = {
-        'games': games
+        'games': Game.objects.all()
     }
     return render(request, 'boardgames/home.html', context)
 
