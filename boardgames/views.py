@@ -3,11 +3,9 @@ from .models import Game
 
 
 def home(request):
-    context = {
-        'games': Game.objects.all()
-    }
-    return render(request, 'boardgames/home.html', context)
+    context = {"games": Game.objects.all()}
+    return render(request, "boardgames/home.html", context)
 
 
 def about(request):
-    return render(request, 'boardgames/about.html', {'title': 'About'})
+    return render(request, "boardgames/about.html", {"title": "About"})
