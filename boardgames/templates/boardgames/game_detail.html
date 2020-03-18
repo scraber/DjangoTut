@@ -1,0 +1,22 @@
+{% extends "boardgames/base.html" %}
+
+{% block content %}
+<article class="media content-section">
+    <img class="rounded-circle article-img" src="{{ user.profile.image.url }}">
+    <div class="media-body">
+        <div class="article-metadata">
+            <h2 class="mr-2">{{ object.name }}</h2>
+            {% if user.is_superuser %}
+            <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'game-update' object.id %}">Update</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'game-delete' object.id %}">Delete</a>
+            </div>
+            {% endif %}
+        </div>
+        <p class="article-content">Max players: {{ object.max_players_count }}</p>
+        <p class="article-content">Complexity: {{ object.get_difficulty_display }}</p>
+        <p class="article-content">RNG Factor: {{ object.get_rng_factor_display }}</p>
+        <p class="article-content">Mechanisms: {{ object.get_genre_display }}</p>
+    </div>
+</article>
+{% endblock content %}

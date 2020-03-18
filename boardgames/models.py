@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator
+from django.urls import reverse
 from .choices import DIFFICULTY_CHOICES, RANDOMNESS_CHOICES, GAME_GENRE_CHOICES
 
 
@@ -17,3 +18,6 @@ class Game(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("game-detail", kwargs={"pk": self.pk})

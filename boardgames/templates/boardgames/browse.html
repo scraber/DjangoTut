@@ -1,0 +1,14 @@
+{% extends "boardgames/base.html" %}
+{% block content %}
+{% if user.is_superuser %}
+<div style="text-align: left;margin-top:5%">
+    <button class="icon-btn add-btn">
+        <div class="add-icon"></div>
+        <div class="btn-txt"><a href="{% url 'game-create' %}">Add new</a></div>
+    </button>
+</div>
+{% endif %}
+{% for game in games %}
+<h2><a class="article-title" href="{% url 'game-detail' game.id %}"> {{game.name}}</a></h2>
+{% endfor %}
+{% endblock %}
