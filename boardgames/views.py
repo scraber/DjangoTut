@@ -20,6 +20,7 @@ class GameListView(ListView):
     template_name = "boardgames/browse.html"
     context_object_name = "games"
     ordering = ["name"]
+    paginate_by = 10
 
 
 class GameDetailView(DetailView):
