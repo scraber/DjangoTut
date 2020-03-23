@@ -128,3 +128,13 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 LOGIN_REDIRECT_URL = "boardgames-home"
 LOGIN_URL = "login"
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+# Remember to allow lesssecure apps on google account settings
+# https://myaccount.google.com/lesssecureapps
+EMAIL_HOST_USER = "xxx@gmail.com"
+EMAIL_HOST_PASSWORD = "xxx"
