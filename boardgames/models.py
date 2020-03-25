@@ -1,6 +1,8 @@
 from django.db import models
 from django.core.validators import MinValueValidator
+from django.utils import timezone
 from django.urls import reverse
+from django.contrib.auth.models import User
 from .choices import DIFFICULTY_CHOICES, RANDOMNESS_CHOICES, GAME_GENRE_CHOICES
 
 
@@ -21,3 +23,12 @@ class Game(models.Model):
 
     def get_absolute_url(self):
         return reverse("game-detail", kwargs={"pk": self.pk})
+
+
+class Comment(models.Model):
+    game = models.ForeignKey(
+        "boardgames.Game", on_delete=models.CASCADE, related_name="comments"
+    )
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    context = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
